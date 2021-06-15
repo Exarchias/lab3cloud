@@ -7,27 +7,24 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const SERVER_PORT = process.env.PORT || 3000;
-var MAX_LENGTH_WORD = 11;
+var MAX_LENGTH_WORD = 10;
 
 app.post('/getWordLengthFrequency', function (req, res) {
 	console.log("post requested received with data: ");
     
     var data = req.body.data;
-    //MAX_LENGTH_WORD = data.length;
+    MAX_LENGTH_WORD = data.toString().length;
     
     console.log(data);
-    //result.fill(0);   
+    console.log(MAX_LENGTH_WORD);   
     var result2 = data.split(" ");
     var result = new Array(MAX_LENGTH_WORD);
     result.fill(0); 
     
-    //var resultStr = "";
 
     for (var i = 0; i < result2.length; i++) {
-        //resultStr = resultStr + result[i] + " ";
         var word = result2[i];
         var index = word.length;
-        console.log(word + ":" + index);
         result[index] = result[index] + 1;
     }
 
